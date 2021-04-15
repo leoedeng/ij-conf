@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+cd ~/.sdkman/candidates
+for dir in *; do
+  subdirs=$(ls $dir | grep -v current)
+  sep_subdirs=$(echo $subdirs | sed 's/ / | /g')
+  echo "  [$dir]" $sep_subdirs
+done

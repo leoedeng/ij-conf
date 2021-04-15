@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+spit $@ -l=kotlin --build=gradle

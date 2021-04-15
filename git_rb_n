@@ -1,0 +1,12 @@
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 n"
+  exit 0;
+fi
+
+N=$1
+while [ $N -gt 0 ]; do
+  BACK=$(eval "for i in {1..$N}; do printf '^'; done")
+  git rb --ignore-date HEAD$BACK
+  let N-=1
+  sleep 1
+done

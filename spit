@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ $# -lt 1 ] || [[ $1 == "-"* ]] || [[ $1 != *":"* ]]; then
+  printf "Usage: spit group.id:artifact-id [...]\n" $0
+  exit 1
+fi
+
+IFS=':' read -r -a array <<< "$1"
+GROUP=${array[0]}
+ARTIFACT=${array[1]}
+shift
+spring init \
+  -j=11 \
+  --package-name=$GROUP \
+  -g=$GROUP \
+  -a=$ARTIFACT \
+  -n=$ARTIFACT \
+  $@ \
+  $ARTIFACT
+
